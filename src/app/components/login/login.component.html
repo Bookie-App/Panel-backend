@@ -1,0 +1,13 @@
+<div>
+    <h2>Login</h2>
+    <form (ngSubmit)="login()" [formGroup]="form">
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="username" name="username" required placeholder="usuario" autocomplete="off"><br>
+  
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" name="password" required placeholder="contraseña" autocomplete="off">
+  
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  

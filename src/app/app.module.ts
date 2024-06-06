@@ -11,11 +11,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';  
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { tokenGuard } from './guards/token.guard';
+import { AddUserComponent } from './components/usuarios/add-user/add-user.component';
+import { UserListComponent } from './components/usuarios/user-list/user-list.component';
+import { EliminarUsuarioComponent } from './components/usuarios/eliminar-usuario/eliminar-usuario.component';
 
 const routes:Routes = [
   {path:'login', component: LoginComponent, title: 'login'},
   {path:'user', component:UserComponent, title:'user', canActivate: [tokenGuard]},
   {path:'admin',component:AdminComponent, title:'admin', canActivate: [tokenGuard]},
+  {path:'usuarios', component:UserListComponent, title:'lista usuarios', canActivate: [tokenGuard]},
+  {path:'add-user', component:AddUserComponent, title:'añadir usuario', canActivate:[tokenGuard]},
   {path: '**', pathMatch: 'full', redirectTo : 'login'}
 ]
 
@@ -24,7 +29,10 @@ const routes:Routes = [
     AppComponent,
     LoginComponent,
     UserComponent,
-    AdminComponent
+    AdminComponent,
+    AddUserComponent,
+    UserListComponent,
+    EliminarUsuarioComponent
   ],
   imports: [
     BrowserModule,

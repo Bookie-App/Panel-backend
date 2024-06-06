@@ -36,6 +36,7 @@ export class LoginComponent {
         console.log('Creando el token...')
         sessionStorage.setItem('token', res.token)
         
+        this.router.navigate(['/admin'])
         console.log(res)
       },
       error: err => console.log(err.status)

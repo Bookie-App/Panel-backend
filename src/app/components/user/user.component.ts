@@ -26,7 +26,7 @@ export class UserComponent {
       error : err => {
         console.log('Código de estado (error) del servidor', err.status)
 
-        if(err.status == 401)
+        if(err.status == 403)
           this.router.navigate(['/'])
       }
     })

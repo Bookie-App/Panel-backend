@@ -1,13 +1,65 @@
-<div>
-    <h2>Login</h2>
-    <form (ngSubmit)="login()" [formGroup]="form">
-      <label for="username">Username</label>
-      <input type="text" id="username" formControlName="username" name="username" required placeholder="usuario" autocomplete="off"><br>
-  
-      <label for="password">Password</label>
-      <input type="password" id="password" formControlName="password" name="password" required placeholder="contraseña" autocomplete="off">
-  
-      <button type="submit">Login</button>
-    </form>
-  </div>
-  
+<head>
+  <title>Login 04</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="login.component.css">
+  <script
+    nonce="f3060a43-6983-4084-8fd9-cdfef4e8dadf">try { (function (w, d) { !function (j, k, l, m) { j[l] = j[l] || {}; j[l].executed = []; j.zaraz = { deferred: [], listeners: [] }; j.zaraz._v = "5671"; j.zaraz.q = []; j.zaraz._f = function (n) { return async function () { var o = Array.prototype.slice.call(arguments); j.zaraz.q.push({ m: n, a: o }) } }; for (const p of ["track", "set", "debug"]) j.zaraz[p] = j.zaraz._f(p); j.zaraz.init = () => { var q = k.getElementsByTagName(m)[0], r = k.createElement(m), s = k.getElementsByTagName("title")[0]; s && (j[l].t = k.getElementsByTagName("title")[0].text); j[l].x = Math.random(); j[l].w = j.screen.width; j[l].h = j.screen.height; j[l].j = j.innerHeight; j[l].e = j.innerWidth; j[l].l = j.location.href; j[l].r = k.referrer; j[l].k = j.screen.colorDepth; j[l].n = k.characterSet; j[l].o = (new Date).getTimezoneOffset(); if (j.dataLayer) for (const w of Object.entries(Object.entries(dataLayer).reduce(((x, y) => ({ ...x[1], ...y[1] })), {}))) zaraz.set(w[0], w[1], { scope: "page" }); j[l].q = []; for (; j.zaraz.q.length;) { const z = j.zaraz.q.shift(); j[l].q.push(z) } r.defer = !0; for (const A of [localStorage, sessionStorage]) Object.keys(A || {}).filter((C => C.startsWith("_zaraz_"))).forEach((B => { try { j[l]["z_" + B.slice(7)] = JSON.parse(A.getItem(B)) } catch { j[l]["z_" + B.slice(7)] = A.getItem(B) } })); r.referrerPolicy = "origin"; r.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(j[l]))); q.parentNode.insertBefore(r, q) };["complete", "interactive"].includes(k.readyState) ? zaraz.init() : j.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
+</head>
+
+<body>
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10">
+          <div class="wrap d-md-flex">
+            <div class="image-container">
+            </div>
+            <div class="login-wrap p-4 p-md-5">
+              <div class="d-flex">
+                <div class="w-100">
+                  <h3 class="mb-4">Iniciar Sesión</h3>
+                </div>
+                <div class="w-100">
+                  <p class="social-media d-flex justify-content-end">
+                    <a  class="social-icon d-flex align-items-center justify-content-center"><span
+                        class="two"></span></a>
+                    <a class="social-icon d-flex align-items-center justify-content-center"><span
+                        class="one"></span></a>
+                  </p>
+                </div>
+              </div>
+              <form (ngSubmit)="login()" [formGroup]="form" class="signin-form">
+                <div class="form-group mb-3">
+                  <label class="label" for="name">Username</label>
+                  <input type="text" class="form-control" placeholder="Username" required id="username" formControlName="username" name="username">
+                </div>
+                <div class="form-group mb-3">
+                  <label class="label" for="password">Password</label>
+                  <input type="password" class="form-control" placeholder="Password" required id="password" formControlName="password" name="password">
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>
+                </div>
+                <div class="form-group d-md-flex">
+                  <div class="w-50 text-left">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vc733d5f01de84e3792a4035cd15c58a81717452547180"
+    integrity="sha512-fqEn6JCqkzgyQXZxQOxB9z6GyWybXdsYNuqu0tW/ATUi0uJMKhFfYpk0taNyC90JiX4HZUqEp6nnOyL7/ZvjCA=="
+    data-cf-beacon='{"rayId":"88f406f95ce12fa7","version":"2024.4.1","token":"cd0b4b3a733644fc843ef0b185f98241"}'
+    crossorigin="anonymous"></script>
+</body>

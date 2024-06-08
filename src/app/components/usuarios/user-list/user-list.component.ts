@@ -39,4 +39,25 @@ export class UserListComponent {
     })
 
   }
+
+
+  eliminarUser(id: number){
+
+    if(confirm("¿Eliminar usuario?")){
+      this.usuarioService.eliminarUsuario(id).subscribe({
+        next: res => {
+          this.usuarioService.listaUsuario().subscribe(data =>{
+            this.usuarios = data
+          })
+        },
+        error: err => {
+          console.log(err)
+        }
+      })
+    }else{
+      alert("Acción cancelada")
+    }
+
+  }
+
 }

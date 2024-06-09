@@ -2,7 +2,10 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <ul class="navbar-nav">
         <li class="nav-item ">
-          <a class="nav-link" class="btn btn-primary active" role="button">Añadir Libro</a>
+          <a class="nav-link" class="btn btn-primary active" role="button" routerLink="/add-libro">Añadir Libro</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" class="btn btn-primary active" role="button" routerLink="/admin">Inicio</a>
         </li>
       </ul>
     </nav>
@@ -11,6 +14,9 @@
   
   <div class="panel panel-default">
     <div class="panel-body">
+      <div class="d-flex mb-3 align-items-center">
+        <input type="text" class="form-control mr-3" placeholder="Buscar por título" [(ngModel)]="textoBusqueda" (input)="filtrarLibros()">
+      </div>
       <table class="table table-hover table-sm">
         <thead class="thead-light">
           <tr>
@@ -28,7 +34,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let libro of libros ">
+          <tr *ngFor="let libro of librosFiltrados ">
             <td>{{libro.titulo}}</td>
             <td>{{libro.autor}}</td>
             <td>{{libro.numeroPaginas}}</td>

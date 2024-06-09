@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="add-user.component.css">
+    <link rel="stylesheet" href="addlibro.component.css">
     <script
       nonce="f3060a43-6983-4084-8fd9-cdfef4e8dadf">try { (function (w, d) { !function (j, k, l, m) { j[l] = j[l] || {}; j[l].executed = []; j.zaraz = { deferred: [], listeners: [] }; j.zaraz._v = "5671"; j.zaraz.q = []; j.zaraz._f = function (n) { return async function () { var o = Array.prototype.slice.call(arguments); j.zaraz.q.push({ m: n, a: o }) } }; for (const p of ["track", "set", "debug"]) j.zaraz[p] = j.zaraz._f(p); j.zaraz.init = () => { var q = k.getElementsByTagName(m)[0], r = k.createElement(m), s = k.getElementsByTagName("title")[0]; s && (j[l].t = k.getElementsByTagName("title")[0].text); j[l].x = Math.random(); j[l].w = j.screen.width; j[l].h = j.screen.height; j[l].j = j.innerHeight; j[l].e = j.innerWidth; j[l].l = j.location.href; j[l].r = k.referrer; j[l].k = j.screen.colorDepth; j[l].n = k.characterSet; j[l].o = (new Date).getTimezoneOffset(); if (j.dataLayer) for (const w of Object.entries(Object.entries(dataLayer).reduce(((x, y) => ({ ...x[1], ...y[1] })), {}))) zaraz.set(w[0], w[1], { scope: "page" }); j[l].q = []; for (; j.zaraz.q.length;) { const z = j.zaraz.q.shift(); j[l].q.push(z) } r.defer = !0; for (const A of [localStorage, sessionStorage]) Object.keys(A || {}).filter((C => C.startsWith("_zaraz_"))).forEach((B => { try { j[l]["z_" + B.slice(7)] = JSON.parse(A.getItem(B)) } catch { j[l]["z_" + B.slice(7)] = A.getItem(B) } })); r.referrerPolicy = "origin"; r.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(j[l]))); q.parentNode.insertBefore(r, q) };["complete", "interactive"].includes(k.readyState) ? zaraz.init() : j.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
   </head>
@@ -20,7 +20,7 @@
               <div class="login-wrap p-4 p-md-5">
                 <div class="d-flex">
                   <div class="w-100">
-                    <h3 class="mb-4">Añadir usuario</h3>
+                    <h3 class="mb-4">Añadir libro</h3>
                   </div>
                   <div class="w-100">
                     <p class="social-media d-flex justify-content-end">
@@ -31,44 +31,39 @@
                     </p>
                   </div>
                 </div>
-                <form (ngSubmit)="register()" [formGroup]="form" class="signin-form">
+                <form (ngSubmit)="addLibro()" [formGroup]="form" class="signin-form">
                   <div class="form-group mb-3">
-                    <label class="label" for="rol">Rol</label>
-                    <select class="form-control" id="rol" formControlName="rol" name="rol">
-                      <option value="ROLE_ADMIN">Admin</option>
-                      <option value="ROLE_USER">User</option>
+                    <label class="label" for="usuario">Usuario</label>
+                    <select class="form-control" id="usuario" formControlName="usuario" name="usuario">
+                      <option *ngFor="let usuario of usuarios" value={{usuario.id}}>{{usuario.username}}</option>
                     </select>
                   </div>
                   <div class="form-group mb-3">
-                    <label class="label" for="password">Nombre</label>
-                    <input type="text" class="form-control" placeholder="Nombre" required id="nombre" formControlName="nombre" name="nombre">
+                    <label class="label" for="titulo">Titulo</label>
+                    <input type="text" class="form-control" placeholder="Título" required id="titulo" formControlName="titulo" name="titulo">
                   </div>
                   <div class="form-group mb-3">
-                    <label class="label" for="name">Username</label>
-                    <input type="text" class="form-control" placeholder="Username" required id="username" formControlName="username" name="username">
+                    <label class="label" for="autor">Autor</label>
+                    <input type="text" class="form-control" placeholder="Autor" required id="autor" formControlName="autor" name="autor">
                   </div>
                   <div class="form-group mb-3">
-                    <label class="label" for="name">Contraseña</label>
-                    <input type="password" class="form-control" placeholder="Contraseña" required id="password" formControlName="password" name="password">
+                    <label class="label" for="numeroPaginas">Número de páginas</label>
+                    <input type="number" class="form-control" placeholder="Número de páginas" required id="numeroPaginas" formControlName="numeroPaginas" name="numeroPaginas">
                   </div>
                   <div class="form-group mb-3">
-                    <label class="label" for="name">Email</label>
-                    <input type="text" class="form-control" placeholder="Email" required id="email" formControlName="email" name="email">
+                    <label class="label" for="genero">Género</label>
+                    <input type="text" class="form-control" placeholder="Género" required id="genero" formControlName="genero" name="genero">
                   </div>
                   <div class="form-group mb-3">
-                    <label class="label" for="name">Ciudad</label>
-                    <input type="text" class="form-control" placeholder="Ciudad" required id="ciudad" formControlName="ciudad" name="ciudad">
+                    <label class="label" for="sinopsis">Sinopsis</label>
+                    <input type="text" class="form-control" placeholder="Sinopsis" required id="sinopsis" formControlName="sinopsis" name="sinopsis">
                   </div>
                   <div class="form-group mb-3">
-                    <label class="label" for="name">Provincia</label>
-                    <input type="text" class="form-control" placeholder="Provincia" required id="provincia" formControlName="provincia" name="provincia">
-                  </div>
-                  <div class="form-group mb-3">
-                    <label class="label" for="name">Código postal</label>
-                    <input type="number" class="form-control" placeholder="Código postal" required id="codigoPostal" formControlName="codigoPostal" name="codigoPostal" maxlength="5">
+                    <label class="label" for="editorial">Editorial</label>
+                    <input type="text" class="form-control" placeholder="Editorial" required id="editorial" formControlName="editorial" name="editorial">
                   </div>
                   <div class="form-group">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3">Registrar</button>
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3">Añadir libro</button>
                   </div>
                   <div class="form-group d-md-flex">
                     <div class="w-50 text-left">

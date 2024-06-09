@@ -13,6 +13,8 @@ export class LibrosComponent {
 
 
   libros?: LibroResponse[]
+  textoBusqueda: string = '';
+  librosFiltrados: LibroResponse[] = []
 
   ngOnInit(){
     this.getLibros()
@@ -23,6 +25,7 @@ export class LibrosComponent {
     this.libroService.listaLibros().subscribe({
       next: res => {
         this.libros = res
+        this.librosFiltrados = res
         console.log(res)
       },
       error: err => {
@@ -37,9 +40,7 @@ export class LibrosComponent {
     if(confirm("¿Eliminar libro?")){
       this.libroService.eliminarLibro(id).subscribe({
         next: res => {
-          this.libroService.listaLibrosUsuario(parseInt(localStorage.getItem('id') || '0')).subscribe(data =>{
-            this.libros = data
-          })
+          this.getLibros()
         },
         error: err => {
           console.log(err)
@@ -49,5 +50,14 @@ export class LibrosComponent {
       alert("Acción cancelada")
     }
 
+  }
+
+  filtrarLibros(): void {
+    if (this.libros) {
+      this.librosFiltrados = this.libros.filter(libros => 
+        libros.titulo.toLowerCase().includes(this.textoBusqueda.toLowerCase()) ||
+        libros.usuario.toLowerCase().includes(this.textoBusqueda.toLowerCase())
+      )
+    }
   }
 }

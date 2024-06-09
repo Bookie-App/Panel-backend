@@ -12,6 +12,8 @@ export class LibrousuarioComponent {
   constructor(private libroService:LibroService){}
 
   libros?: LibroResponse[]
+  textoBusqueda: string = '';
+  librosFiltrados: LibroResponse[] = []
 
   ngOnInit(){
     this.getLibrosUsuario()
@@ -22,6 +24,7 @@ export class LibrousuarioComponent {
     this.libroService.listaLibrosUsuario(parseInt(localStorage.getItem('id') || '0')).subscribe({
       next: res => {
         this.libros = res
+        this.librosFiltrados = res
         console.log(res)
       },
       error: err => {
@@ -39,6 +42,7 @@ export class LibrousuarioComponent {
           this.libroService.listaLibrosUsuario(parseInt(localStorage.getItem('id') || '0')).subscribe(data =>{
             this.libros = data
           })
+          this.getLibrosUsuario()
         },
         error: err => {
           console.log(err)
@@ -48,5 +52,13 @@ export class LibrousuarioComponent {
       alert("Acción cancelada")
     }
 
+  }
+
+  filtrarLibros(): void {
+    if (this.libros) {
+      this.librosFiltrados = this.libros.filter(libros => 
+        libros.titulo.toLowerCase().includes(this.textoBusqueda.toLowerCase())
+      )
+    }
   }
 }

@@ -19,6 +19,16 @@ export class LoginComponent {
     });
   }
 
+  ngOnInit(){
+    if(sessionStorage.getItem('token') != null){
+      sessionStorage.removeItem('token')
+    }
+
+    if(localStorage.getItem('id') != null){
+      localStorage.removeItem('id')
+    }
+  }
+
   login(): void {
     let login: Login = {
       username: this.form.get('username')?.value,
@@ -37,7 +47,6 @@ export class LoginComponent {
         sessionStorage.setItem('token', res.token)
         
         this.router.navigate(['/admin'])
-        console.log(res)
       },
       error: err => console.log(err.status)
     });

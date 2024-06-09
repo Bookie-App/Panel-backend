@@ -11,9 +11,18 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
+    <div class="d-flex mb-3 align-items-center">
+      <input type="text" class="form-control mr-3" placeholder="Buscar por username" [(ngModel)]="textoBusqueda" (input)="filtrarUsuarios()">
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]="reportado" (ngModelChange)="onSwitchChange($event)">
+        <span class="slider round"></span>
+      </label>
+      <span class="ml-2">Usuarios reportados</span>
+    </div>
     <table class="table table-hover table-sm">
       <thead class="thead-light">
         <tr>
+          <th>Id</th>
           <th>Username</th>
           <th>Nombre</th>
           <th>Email</th>
@@ -26,7 +35,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let usuario of usuarios ">
+        <tr *ngFor="let usuario of usuariosFiltrados ">
+          <td>{{usuario.id}}</td>
           <td>{{usuario.username}}</td>
           <td>{{usuario.nombre}}</td>
           <td>{{usuario.email}}</td>
@@ -34,8 +44,8 @@
           <td>{{usuario.provincia}}</td>
           <td>{{usuario.codigoPostal}}</td>
           <td>{{usuario.reportado}}</td>
-          <td><button (click)="eliminarUser(usuario.id)" class='btn btn-primary'><i class="fa fa-futboll-0">Eliminar</i></button>
-            <button class='btn btn-info' data-toggle="modal" data-target="#myModal">Actualizar</button>
+          <td><button (click)="eliminarUser(usuario.id)" class='btn btn-primary btn-eliminar'><i class="fa fa-futboll-0">Eliminar</i></button>
+            <button class='btn btn-info' data-toggle="modal" data-target="#myModal" (click)="navegarLibrosUsuario(usuario.id)">Ver libros</button>
           </td>
         </tr>
       </tbody><br>

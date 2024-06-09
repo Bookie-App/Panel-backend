@@ -14,6 +14,7 @@ export class UserComponent {
 
   ngOnInit(){
     this.getResponseFromServer()
+    this.router.navigate(['/'])
   }
 
 
@@ -26,7 +27,7 @@ export class UserComponent {
       error : err => {
         console.log('Código de estado (error) del servidor', err.status)
 
-        if(err.status == 403)
+        if(err.status == 401)
           this.router.navigate(['/'])
       }
     })

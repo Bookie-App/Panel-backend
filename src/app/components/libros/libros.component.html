@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link" class="btn btn-primary active" role="button">Añadir Libro</a>
+        </li>
+      </ul>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-hover table-sm">
+        <thead class="thead-light">
+          <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Numero de páginas</th>
+            <th>Género</th>
+            <th>Sinopsis</th>
+            <th>Editorial</th>
+            <th>Prestado</th>
+            <th>Usuario</th>
+            <th>Id del usuario</th>
+            <th>Id del libro</th>
+  
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let libro of libros ">
+            <td>{{libro.titulo}}</td>
+            <td>{{libro.autor}}</td>
+            <td>{{libro.numeroPaginas}}</td>
+            <td>{{libro.genero}}</td>
+            <td>{{libro.sinopsis}}</td>
+            <td>{{libro.editorial}}</td>
+            <td>{{libro.prestado}}</td>
+            <td>{{libro.usuario}}</td>
+            <td>{{libro.userId}}</td>
+            <td>{{libro.libroId}}</td>
+            <td><button class='btn btn-primary'><i class="fa fa-futboll-0" (click)="eliminarLibro(libro.libroId)">Eliminar</i></button>
+            </td>
+          </tr>
+        </tbody><br>
+      </table>
+    </div>
+  </div>

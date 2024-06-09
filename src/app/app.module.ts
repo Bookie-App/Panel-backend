@@ -14,6 +14,8 @@ import { tokenGuard } from './guards/token.guard';
 import { AddUserComponent } from './components/usuarios/add-user/add-user.component';
 import { UserListComponent } from './components/usuarios/user-list/user-list.component';
 import { EliminarUsuarioComponent } from './components/usuarios/eliminar-usuario/eliminar-usuario.component';
+import { LibrosComponent } from './components/libros/libros.component';
+import { LibrousuarioComponent } from './components/librousuario/librousuario.component';
 
 const routes:Routes = [
   {path:'login', component: LoginComponent, title: 'login'},
@@ -21,6 +23,8 @@ const routes:Routes = [
   {path:'admin',component:AdminComponent, title:'admin', canActivate: [tokenGuard]},
   {path:'usuarios', component:UserListComponent, title:'lista usuarios', canActivate: [tokenGuard]},
   {path:'add-user', component:AddUserComponent, title:'añadir usuario', canActivate:[tokenGuard]},
+  {path: 'libros', component:LibrosComponent, title: 'libros', canActivate: [tokenGuard]},
+  {path: 'libros-usuario', component:LibrousuarioComponent, title: 'libros usuario', canActivate: [tokenGuard]},
   {path: '**', pathMatch: 'full', redirectTo : 'login'}
 ]
 
@@ -32,7 +36,9 @@ const routes:Routes = [
     AdminComponent,
     AddUserComponent,
     UserListComponent,
-    EliminarUsuarioComponent
+    EliminarUsuarioComponent,
+    LibrosComponent,
+    LibrousuarioComponent
   ],
   imports: [
     BrowserModule,

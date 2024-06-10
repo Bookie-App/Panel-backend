@@ -11,7 +11,7 @@ export class TokenService {
 
   private httpHeaders: HttpHeaders = new HttpHeaders({'Content-Type' : 'application/json'})
   
-  private loginUrl = 'http://localhost:8080/api/auth/login';
+  private loginUrl = 'https://bookie.escuelaestech.com.es/api/auth/login';
 
   constructor(private http: HttpClient) {}
 
@@ -20,11 +20,11 @@ export class TokenService {
   }
 
   getAdmin(): Observable<any>{
-    return this.http.get<any>('http://localhost:8080/api/demo/admin')
+    return this.http.get<any>('https://bookie.escuelaestech.com.es/api/demo/admin')
   }
 
   getUser(): Observable<any>{
-    return this.http.get<any>('http://localhost:8080/api/demo/user')
+    return this.http.get<any>('https://bookie.escuelaestech.com.es/api/demo/user')
   }
 }
 

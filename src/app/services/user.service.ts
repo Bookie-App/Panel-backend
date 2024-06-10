@@ -13,8 +13,8 @@ export class UserService {
 
   private httpHeaders: HttpHeaders = new HttpHeaders({'Content-Type' : 'application/json'})
   
-  private userUrl = 'http://localhost:8080/api/usuario';
-  private registernUrl = 'http://localhost:8080/api/auth/register';
+  private userUrl = 'https://bookie.escuelaestech.com.es/api/usuario';
+  private registernUrl = 'https://bookie.escuelaestech.com.es/api/auth/register';
 
   constructor(private http: HttpClient) {}
 

@@ -11,7 +11,7 @@ export class LibroService {
 
   private httpHeaders: HttpHeaders = new HttpHeaders({'Content-Type' : 'application/json'})
 
-  private libroUrl = 'http://localhost:8080/api/libro';
+  private libroUrl = 'https://bookie.escuelaestech.com.es/api/libro';
   constructor(private http:HttpClient) { }
 
   listaLibros(): Observable<LibroResponse[]>{
